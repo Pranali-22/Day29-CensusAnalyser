@@ -17,15 +17,15 @@ public class CensusAnalyser {
             csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
             CsvToBean<IndiaCensusCSV> csvToBean = csvToBeanBuilder.build();
             Iterator<IndiaCensusCSV> censusCSVIterator = csvToBean.iterator();
-            int namOfEateries = 0;
+            int numOfEnteries = 0;
             while (censusCSVIterator.hasNext()) {
-                namOfEateries++;
+                numOfEnteries++;
                 IndiaCensusCSV censusData = censusCSVIterator.next();
             }
-            return namOfEateries;
+            return numOfEnteries;
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExceptionType.CENSUS_INCORRECT_FILE_FORMAT);
+                    CensusAnalyserException.ExceptionType.CENSUS_WRONG_DELIMITER_OR_WRONG_HEADER);
         }
     }
 }
